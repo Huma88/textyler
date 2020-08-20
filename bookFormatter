@@ -44,3 +44,20 @@ function lineLengthFormatter(lineLength, text, whiteSpaceRegex, breakLineCharact
     text = text.join("");
     return text;
 }
+
+/**
+ * Function which receive a text and it insert jumppages string to fix the
+ * number of lines per page.
+ * @param {Number} pageLines Maximun number of characters per line.
+ * @param {String} text Text to format.
+ * @param {String} breakLineCharacter String representing a line break.
+ * @param {String} newPageCharacter String representing a page jump.
+ */
+function pageFormatter(pageLines, text, breakLineCharacter, newPageCharacter) {
+    text = text.split(breakLineCharacter);
+    for (var i = pageLines - 1; i < text.length; i += pageLines) {
+        text[i] += newPageCharacter;
+    }
+    text = text.join(breakLineCharacter);
+    return text;
+}
