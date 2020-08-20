@@ -11,7 +11,6 @@ var text = "Lorem Ipsum is simply dummy text of the printing and typesetting ind
 
 ~~~
     var a = lineLengthFormatter(54, text, /(\s|\t|\r|\n|<br>\n)/, "<br>\n");
-    console.log(a);
 ~~~
     
 #### output:
@@ -35,8 +34,7 @@ ___
 - ### pageLengthFormatter(pageLines, text, breakLineCharacter, newPageCharacter) example:
 
 ~~~
-    var b = pageLengthFormatter(5, a, "<br>\n", "<div class='page'>\n", "</div>\n");
-    console.log(b); 
+    var b = pageLengthFormatter(5, a, "<br>\n", "<div class='page'>\n", "</div>\n"); 
 ~~~
     
 #### output:
