@@ -1,0 +1,46 @@
+/**
+ * Function which receive a text and it insert breakline characters to fix it in
+ * the right amount of characters per line.
+ * @param {*} lineLength Maximun number of characters per line.
+ * @param {*} text Text to format.
+ * @param {*} whiteSpaceRegex Regular expression with all characters where a breakline could be inserted, by default [\s\t\r\n]
+ * @param {*} breakLineCharacter Character representing the breakline, it must be contained in whiteSpaceRegex regular expresion.
+ */
+function lineLengthFormatter(lineLength, text, whiteSpaceRegex, breakLineCharacter) {
+    if (lineLength < 2) {
+        throw {
+            name: "insuficient line length",
+            message: "line length must be at least 2 to be able to print a character and insert a linebreak"
+        };
+    }
+    if (!whiteSpaceRegex.test(breakLineCharacter)) {
+        throw {
+            name: "breakline character doesn't match",
+            message: "breakline character must match whiteSpaceRegex regular expresion, otherwise it would be considered as a word character and it would lead to an infinite loop"
+        };
+    }
+    text = text.split("");
+    for (var i = lineLength; i < text.length; i += lineLength) {
+        var flag_middleWord = false;
+        while (!whiteSpaceRegex.test(text[i]) && i > -1) {
+            flag_middleWord = true;
+            i--;
+        }
+        if (i > -1) {
+            text[i] = breakLineCharacter;
+        }
+        if (flag_middleWord) {
+            var j = i + 1;
+            var wordLength = 1;
+            while (!whiteSpaceRegex.test(text[j]) && wordLength < lineLength) {
+                j++;
+                wordLength++;
+            }
+            if (wordLength === lineLength) {
+                text.splice(j, 0, "\t");
+            }
+        }
+    }
+    text = text.join("");
+    return text;
+}
