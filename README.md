@@ -14,7 +14,7 @@ Source code of [textyler.js](https://github.com/Huma88/textyler) is available on
 
 ## License
 
-[textyler.ts](https://github.com/Huma88/textyler) source code is released under the terms of the [BSD 3-Clause License](LICENSE).
+[textyler.ts](https://github.com/Huma88/textyler) source code is released under the terms of the [GNU General Public License v3.0](LICENSE).
 
 ## How to use it:
 
