@@ -6,7 +6,7 @@
  * @param {RegExp} whiteSpaceRegex Regular expression with all characters where a breakline could be inserted, by default [\s\t\r\n]
  * @param {String} breakLineSymbol String representing the breakline, it must be contained in whiteSpaceRegex regular expresion, by default "\n"
  */
-export function lineLengthFormatter(lineLength, text, whiteSpaceRegex, breakLineSymbol) {
+module.exports.lineLengthFormatter = function lineLengthFormatter(lineLength, text, whiteSpaceRegex, breakLineSymbol) {
     whiteSpaceRegex = whiteSpaceRegex || /[\s\t\r\n]/;
     breakLineSymbol = breakLineSymbol || "\n";
     if (lineLength <= breakLineSymbol.length) {
@@ -56,7 +56,7 @@ export function lineLengthFormatter(lineLength, text, whiteSpaceRegex, breakLine
  * @param {String} startPageSymbol String representing the start of a page.
  * @param {String} endPageSymbol String representing a the end of a page.
  */
-export function pageLengthFormatter(pageLines, text, breakLineSymbol, startPageSymbol, endPageSymbol) {
+module.exports.pageLengthFormatter = function pageLengthFormatter(pageLines, text, breakLineSymbol, startPageSymbol, endPageSymbol) {
     text = text.split(breakLineSymbol);
     text.unshift(startPageSymbol);
     for (var i = pageLines; i < text.length; i += pageLines) {
