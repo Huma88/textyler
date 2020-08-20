@@ -1,12 +1,14 @@
 /**
  * Function which receive a text and it insert breakline characters to fix it in
  * the right amount of characters per line.
- * @param {*} lineLength Maximun number of characters per line.
- * @param {*} text Text to format.
- * @param {*} whiteSpaceRegex Regular expression with all characters where a breakline could be inserted, by default [\s\t\r\n]
- * @param {*} breakLineCharacter Character representing the breakline, it must be contained in whiteSpaceRegex regular expresion.
+ * @param {Number} lineLength Maximun number of characters per line.
+ * @param {String} text Text to format.
+ * @param {RegExp} whiteSpaceRegex Regular expression with all characters where a breakline could be inserted, by default [\s\t\r\n]
+ * @param {String} breakLineCharacter String representing the breakline, it must be contained in whiteSpaceRegex regular expresion, by default "\n"
  */
 function lineLengthFormatter(lineLength, text, whiteSpaceRegex, breakLineCharacter) {
+    whiteSpaceRegex = whiteSpaceRegex || /[\s\t\r\n]/;
+    breakLineCharacter = breakLineCharacter || "\n";
     if (lineLength < 2) {
         throw {
             name: "insuficient line length",
@@ -16,7 +18,7 @@ function lineLengthFormatter(lineLength, text, whiteSpaceRegex, breakLineCharact
     if (!whiteSpaceRegex.test(breakLineCharacter)) {
         throw {
             name: "breakline character doesn't match",
-            message: "breakline character must match whiteSpaceRegex regular expresion, otherwise it would be considered as a word character and it would lead to an infinite loop"
+            message: "breakline string must match whiteSpaceRegex regular expresion, otherwise it would be considered as a word character and it would lead to an infinite loop"
         };
     }
     text = text.split("");
@@ -37,7 +39,7 @@ function lineLengthFormatter(lineLength, text, whiteSpaceRegex, breakLineCharact
                 wordLength++;
             }
             if (wordLength === lineLength) {
-                text.splice(j, 0, "\t");
+                text.splice(j, 0, breakLineCharacter);
             }
         }
     }
@@ -53,10 +55,10 @@ function lineLengthFormatter(lineLength, text, whiteSpaceRegex, breakLineCharact
  * @param {String} breakLineCharacter String representing a line break.
  * @param {String} newPageCharacter String representing a page jump.
  */
-function pageFormatter(pageLines, text, breakLineCharacter, newPageCharacter) {
+function pageLengthFormatter(pageLines, text, breakLineCharacter, newPageCharacter) {
     text = text.split(breakLineCharacter);
     for (var i = pageLines - 1; i < text.length; i += pageLines) {
-        text[i] += newPageCharacter;
+        text[i + 1] = newPageCharacter + text[i + 1];
     }
     text = text.join(breakLineCharacter);
     return text;
