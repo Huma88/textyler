@@ -1,5 +1,5 @@
 # textyler
-js library to format text
+js library to style text
 
 ## How to use it:
 
