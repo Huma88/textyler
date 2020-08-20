@@ -10,7 +10,7 @@ import { lineLengthFormatter, pageLengthFormatter } from "path/to/textyler.js";
 
 ## Download
 
-Source code of [textyler.js](https://github.com/Huma88/textyler) is available on [GitHub](https://github.com/Huma88/textyler).
+Source code of [textyler.js](https://github.com/Huma88/textyler) is available on [GitHub](https://github.com/Huma88/textyler/bookFormatter).
 
 ## License
 
