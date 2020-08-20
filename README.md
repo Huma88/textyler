@@ -5,7 +5,7 @@
 ## Import
 
 ~~~js
-import { lineLengthFormatter, pageLengthFormatter } from "path/to/textyler.js";
+var BookFormatter = require("path/to/textyler.js");
 ~~~
 
 ## Download
