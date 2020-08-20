@@ -1,5 +1,20 @@
-# textyler
-js library to style text
+# textyler.js
+## A JS librery to style text.
+[textyler.js](https://github.com/Huma88/textyler) is a library which allows you to style text with custom number of characters per line, and number of lines per page, returning it with a custom format.
+
+## Import
+
+~~~js
+import { lineLengthFormatter, pageLengthFormatter } from "path/to/textyler.js";
+~~~
+
+## Download
+
+Source code of [textyler.js](https://github.com/Huma88/textyler) is available on [GitHub](https://github.com/Huma88/textyler).
+
+## License
+
+[textyler.ts](https://github.com/Huma88/textyler) source code is released under the terms of the [BSD 3-Clause License](LICENSE).
 
 ## How to use it:
 
